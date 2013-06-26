@@ -2,7 +2,7 @@
 //  BOMarkdownParser.m
 //  Cocktail
 //
-//  Created by Daniel Eggert on 1/13/12.
+//  Created by BioWink GmbH on 1/13/12.
 //  Copyright (c) 2012 SHAPE ApS. All rights reserved.
 //
 

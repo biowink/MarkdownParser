@@ -2,8 +2,8 @@
 //  BOCoreTextMarkdownParser.h
 //  Wheel
 //
-//  Created by Daniel Eggert on 2/26/13.
-//  Copyright (c) 2013 Bödewadt. All rights reserved.
+//  Created by BioWink GmbH on 2/26/13.
+//  Copyright (c) 2013 BioWink GmbH. All rights reserved.
 //
 
 #import "BOMarkdownParser.h"
