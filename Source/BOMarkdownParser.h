@@ -44,6 +44,8 @@ __attribute__((visibility("default")))
 /** For header levels 1 - 6. Array of BOAttributesReplacementBlock_t instances. */
 @property (nonatomic, copy) NSArray *headerAttributes;
 
+@property (nonatomic, assign) BOOL renderNewLineAtEndOfParagraph;
+
 - (NSAttributedString *)parseString:(NSString *)input;
 
 @end

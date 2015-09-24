@@ -68,6 +68,7 @@ static void renderHeader(struct buf *ob, struct buf *text, int level, void *opaq
 static void renderList(struct buf *ob, struct buf *text, int flags, void *opaque);
 static void renderListitem(struct buf *ob, struct buf *text, int flags, void *opaque);
 static void renderParagraph(struct buf *ob, struct buf *text, void *opaque);
+static void renderParagraphWithoutNewLine(struct buf *ob, struct buf *text, void *opaque);
 static int renderAutolink(struct buf *ob, struct buf *link, enum mkd_autolink type, void *opaque);
 //static int renderCodespan(struct buf *ob, struct buf *text, void *opaque);
 static int renderDoubleEmphasis(struct buf *ob, struct buf *text, char c, void *opaque);
@@ -104,6 +105,7 @@ static void renderNormalText(struct buf *ob, struct buf *text, void *opaque);
     self = [super init];
     if (self) {
         [self setupAttributes];
+		self.renderNewLineAtEndOfParagraph = YES;
     }
     return self;
 }
@@ -129,7 +131,12 @@ static void renderNormalText(struct buf *ob, struct buf *text, void *opaque);
 //    renderer.hrule = renderHrule;
     renderer.list = renderList;
     renderer.listitem = renderListitem;
-    renderer.paragraph = renderParagraph;
+	if (self.renderNewLineAtEndOfParagraph) {
+		renderer.paragraph = renderParagraph;
+	}
+	else {
+		renderer.paragraph = renderParagraphWithoutNewLine;
+	}
     renderer.autolink = renderAutolink;
 //    renderer.codespan = renderCodespan;
     renderer.double_emphasis = renderDoubleEmphasis;
@@ -302,6 +309,11 @@ static void renderParagraph(UNUSED struct buf *ob, struct buf *text, void * UNUS
 {
     bufput(ob, text->data, text->size);
     bufputc(ob, '\n');
+}
+
+static void renderParagraphWithoutNewLine(UNUSED struct buf *ob, struct buf *text, void * UNUSED opaque)
+{
+	bufput(ob, text->data, text->size);
 }
 
 //static int renderCodespan(UNUSED struct buf *ob, struct buf *text, void *opaque)
