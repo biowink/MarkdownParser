@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
   s.name             = "MarkdownParser"
-  s.version          = "1.0"
-  s.summary          = "our handgrown bullshit horrible MarkdownParser"
+  s.version          = "1.0.1"
+  s.summary          = "private podspec used for MarkdownParser in the Clue app. originally by @danieleggert"
   s.homepage         = "https://helloclue.com/"
   s.license          = "Copyright 2016 BioWink GmbH, all rights reserved."
   s.authors           = { "Joshua May" => "josh@helloclue.com", 
@@ -21,6 +21,8 @@ Pod::Spec.new do |s|
                    "Source/libsoldout/array.{h,c}", 
                    "Source/libsoldout/buffer.{h,c}", 
                    "Source/libsoldout/markdown.{h,c}", 
+
+  s.private_header_files = "Source/libsoldout/*.h"
 
   s.frameworks = "Foundation"
   s.module_name = "MarkdownParser"
